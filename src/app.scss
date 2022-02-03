@@ -1,0 +1,63 @@
+//global variables
+$main-color: lighten(#0c0c0c, 5%);
+$primary-text: #cccccc;
+
+//global styles
+* {
+  font-family: "Open Sans", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+//mixins
+@mixin df-jcc-aic {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin df-jcc-aic-fdc {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+@mixin link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 6px;
+  padding: 8px;
+  width: 100%;
+  cursor: pointer;
+  white-space: nowrap;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: lighten($main-color, 8%);
+    color: #ffffff;
+  
+  }
+}
+
+@mixin transation {
+  transition: ease 0.5s all;
+}
+
+//screen behavior
+$small: 500px;
+$medium: 900px;
+
+@mixin screen-medium {
+  @media screen and (max-width: $medium) {
+    @content;
+  }
+}
+
+@mixin screen-small {
+  @media screen and (max-width: $small) {
+    @content;
+  }
+}

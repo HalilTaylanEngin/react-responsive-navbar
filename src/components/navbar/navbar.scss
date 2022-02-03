@@ -1,0 +1,209 @@
+@import "../../app.scss";
+
+.navbar {
+  background-color: $main-color;
+  .container {
+    padding: 10px 40px;
+    @include df-jcc-aic;
+
+    .logo {
+      height: 40px;
+      margin-right: 30px;
+    }
+    .menu-wrapper {
+      flex-grow: 1;
+      .menu-position {
+        @include df-jcc-aic;
+        background-color: $main-color;
+        color: $primary-text;
+        font-size: 13px;
+
+        .left {
+          border-right: 1px solid rgba($color: $primary-text, $alpha: 0.3);
+         
+          .nav-list {
+            @include df-jcc-aic;
+            list-style: none;
+            .nav-list-item {
+              @include link;
+              span {
+                font-size: 18px;
+                @include df-jcc-aic;
+                margin-right: 3px;
+              }
+            }
+          }
+        }
+        .right {
+          .nav-list {
+            @include df-jcc-aic;
+            list-style: none;
+            .nav-list-item {
+              @include link;
+
+              position: relative;
+              @include transation;
+              .dropdown {
+                transition: all .3s ease-in ;
+                background-color: lighten($main-color, 4%);
+                position: absolute;
+                left: -30%;
+                padding: 8px;
+                border-radius: 0 0 8px 8px;
+                top: calc(100%);
+                opacity: 0;
+                min-width: 140px;
+                &.active {
+                  top: calc(100% + 13px);
+                  z-index: 1000;
+                  opacity: 1;
+                }
+                li {
+                  justify-content: flex-start;
+                }
+              }
+              span {
+                font-size: 18px;
+                @include df-jcc-aic;
+                margin-right: 3px;
+              }
+            }
+          }
+        }
+      }
+    }
+    .menu-toogle-content {
+      display: none;
+    }
+  }
+}
+
+//SCREEN MEDIUM
+@include screen-medium {
+  .navbar {
+    .container {
+      padding: 8px 25px;
+      position: relative;
+      .logo {
+        height: 34px;
+        margin-right: 24px;
+      }
+      .menu-wrapper {
+        flex-grow: 1;
+        .menu-position {
+          .left {
+            z-index: -2;
+            .nav-list {
+              border-top: 1px solid rgba($color: $primary-text, $alpha: 0.2);
+              justify-content: space-around;
+              background-color: $main-color;
+              position: absolute;
+              left: 0;
+              top: 100%;
+              width: 100%;
+            }
+          }
+        }
+      }
+      .menu-toogle-content {
+        display: none;
+      }
+    }
+  }
+}
+
+//SCREEN SMALL
+@include screen-small {
+  .navbar {
+    .container {
+      height: 40px;
+      padding: 5px 10px;
+      .logo {
+        height: 24px;
+        margin-right: 20px;
+      }
+
+      .menu-wrapper {
+        @include df-jcc-aic-fdc;
+        @include transation;
+        background-color: $main-color;
+        position: fixed;
+        right: -300px;
+        top: 40px;
+        width: 100%;
+        max-width: 300px;
+        height: calc(100vh - 40px);
+        padding: 20px 8px;
+
+        &.active {
+          right: 0;
+        }
+        .menu-position {
+          position: relative;
+          @include df-jcc-aic-fdc;
+          font-size: 12px;
+          width: 100%;
+          .left {
+            width: 100%;
+            .nav-list {
+              @include df-jcc-aic-fdc;
+              width: 100%;
+              .nav-list-item {
+                justify-content: flex-start;
+              }
+            }
+          }
+          .right {
+            width: 100%;
+            .nav-list {
+              @include df-jcc-aic-fdc;
+              width: 100%;
+              border-bottom: 1px solid rgba($color: $primary-text, $alpha: 0.3);
+              .nav-list-item {
+                justify-content: flex-start;
+                position: relative;
+                .dropdown {
+                  @include transation;
+                  background-color: lighten($main-color, 4%);
+                  position: absolute;
+                  left: 50%;
+                  width: 50%;
+                  padding: 8px;
+                  border-radius: 0 0 8px 8px;
+                  top: calc(0%);
+                  opacity: 0;
+                  &.active {
+                    top: calc(100%);
+                    min-width: 140px;
+                    z-index: 1000;
+                    opacity: 1;
+                  }
+                  li {
+                    justify-content: flex-start;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      .menu-toogle-content {
+        @include df-jcc-aic;
+        cursor: pointer;
+        padding: 5px;
+        border-radius: 5px;
+        white-space: nowrap;
+        &:hover {
+          background-color: lighten($main-color, 5%);
+        }
+        p {
+          color: $primary-text;
+          font-size: 11px;
+        }
+        .menu-icon {
+          margin: 0 5px;
+        }
+      }
+    }
+  }
+}
